@@ -452,7 +452,7 @@ public class PictureSelectorActivity extends PictureBaseActivity implements View
     @Override
     public void onClick(View v) {
         int id = v.getId();
-        if (id == R.id.picture_left_back || id == R.id.picture_right) {
+        if (id == R.id.picture_left_back) {
             if (folderWindow.isShowing()) {
                 folderWindow.dismiss();
             } else {
@@ -487,7 +487,7 @@ public class PictureSelectorActivity extends PictureBaseActivity implements View
             overridePendingTransition(R.anim.a5, 0);
         }
 
-        if (id == R.id.id_ll_ok) {
+        if (id == R.id.id_ll_ok || id == R.id.picture_right) {
             List<LocalMedia> images = adapter.getSelectedImages();
             LocalMedia image = images.size() > 0 ? images.get(0) : null;
             String pictureType = image != null ? image.getPictureType() : "";
@@ -847,6 +847,7 @@ public class PictureSelectorActivity extends PictureBaseActivity implements View
         boolean enable = selectImages.size() != 0;
         if (enable) {
             id_ll_ok.setEnabled(true);
+            picture_right.setVisibility(View.VISIBLE);
             picture_id_preview.setEnabled(true);
             picture_id_preview.setSelected(true);
             picture_tv_ok.setSelected(true);
@@ -865,6 +866,7 @@ public class PictureSelectorActivity extends PictureBaseActivity implements View
             }
         } else {
             id_ll_ok.setEnabled(false);
+            picture_right.setVisibility(View.INVISIBLE);
             picture_id_preview.setEnabled(false);
             picture_id_preview.setSelected(false);
             picture_tv_ok.setSelected(false);
